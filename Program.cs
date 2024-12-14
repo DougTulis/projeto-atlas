@@ -1,4 +1,6 @@
-﻿namespace Projeto_Atlas
+﻿using Projeto_Atlas.Menus;
+
+namespace Projeto_Atlas
 {
     internal class Program
     {
@@ -14,32 +16,13 @@
 ╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════");
         }
 
-        static void MostrarMenu()
-        {
-            MostrarLogo();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Escolha uma opção: ");
-            Console.WriteLine("1. Pessoas");
-            Console.WriteLine("2. Locações");
-            Console.WriteLine("3. Financeiro ");
-            Console.WriteLine("4. Sair");
-            int Escolha = int.Parse(Console.ReadLine());
-            ExecutarEscolha(Escolha);
-        }
 
         static void ExecutarEscolha(int Escolha)
         {
             switch (Escolha)
             {
                 case 1:
-                    // MenuPessoas();
-                    Console.Clear();
-                    Console.WriteLine("Executando menu pessoas");
-                    Console.ReadKey();
-                    Thread.Sleep(1000);
-                    Console.Clear();
-                    MostrarMenu();
+                    CadastroPessoas.Cadastrar();
                     break;
                 case 2:
                     // MenuLocacoes();
@@ -48,8 +31,6 @@
                     Console.ReadKey();
                     Thread.Sleep(1000);
                     Console.Clear();
-                    MostrarMenu();
-
                     break;
                 case 3:
                     // Financeiro();
@@ -58,26 +39,33 @@
                     Console.ReadKey();
                     Thread.Sleep(1000);
                     Console.Clear();
-                    MostrarMenu();
                     break;
-                case 4:
+                case 0:
                     // Sair();
                     Console.Clear();
                     Console.WriteLine("Volte Logo!! :)");
-                    return;
-                    MostrarMenu();
+                    Environment.Exit(0);
                     break;
                 default:
-                    Console.WriteLine("Opção invalida");
+                    Console.WriteLine("Opção invalida!!");
+                    Console.ReadKey();
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                    
                     break;
 
             }
-
         }
 
         static void Main(string[] args)
         {
-            MostrarMenu();
+
+            while (true)
+            {
+                MenuPrincipal.Menu();
+                int Escolha = int.Parse(Console.ReadLine());
+                ExecutarEscolha(Escolha);
+            }
         }
     }
 }

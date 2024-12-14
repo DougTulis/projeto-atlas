@@ -6,8 +6,20 @@ using System.Threading.Tasks;
 
 namespace Projeto_Atlas.Modelos
 {
-    internal class Pessoa
+    public class Pessoa
     {
+        public int Id { get; set; }
+        public string Nome { get; set; }
+        public string Contato { get; set; }
+        public string Cpf { get; set; }
+        public DateTime Nascimento { get; set; }
 
+        public Pessoa(string Nome, string Contato, string Cpf, DateTime Nascimento)
+        {
+            this.Nome = Nome;
+            this.Contato = Contato;
+            this.Cpf = Cpf;
+            this.Nascimento = Nascimento;
+        }
     }
 }
