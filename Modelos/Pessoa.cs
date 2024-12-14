@@ -8,5 +8,6 @@ namespace Projeto_Atlas.Modelos
 {
     internal class Pessoa
     {
+
     }
 }
