@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Projeto Atlas")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1380c57825b333f4b360150479f5bfc7c66930f8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9109aa8417c6df9b6834744f9538c7f299a909f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Projeto Atlas")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Projeto Atlas")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

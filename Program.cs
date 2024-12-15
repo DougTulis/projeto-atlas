@@ -1,23 +1,24 @@
-﻿using Projeto_Atlas.Menus;
+﻿using Microsoft.Data.SqlClient;
+using Projeto_Atlas.Banco;
+using Projeto_Atlas.Menus;
+using System.Linq.Expressions;
 
+
+try
+{
+    using var Conexao = new Conexao().ObterConexao();
+    Conexao.Open();
+    Console.WriteLine("Conexao Aberta!");
+}
+catch(SqlException e){
+    Console.WriteLine(e.StackTrace);
+}
+return;
 namespace Projeto_Atlas
 {
     internal class Program
     {
-
-        static void MostrarLogo()
-        {
-            Console.WriteLine(@"
- █████╗ ████████╗██╗      █████╗ ███████╗
-██╔══██╗╚══██╔══╝██║     ██╔══██╗██╔════╝
-███████║   ██║   ██║     ███████║███████╗
-██╔══██║   ██║   ██║     ██╔══██║╚════██║
-██║  ██║   ██║   ███████╗██║  ██║███████║
-╚═╝  ╚═╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚══════");
-        }
-
-
-        static void ExecutarEscolha(int Escolha)
+       static void ExecutarEscolha(int Escolha)
         {
             switch (Escolha)
             {
@@ -25,33 +26,33 @@ namespace Projeto_Atlas
                     CadastroPessoas.Cadastrar();
                     break;
                 case 2:
-                    // MenuLocacoes();
-                    Console.Clear();
-                    Console.WriteLine("Executando menu Locações");
-                    Console.ReadKey();
-                    Thread.Sleep(1000);
-                    Console.Clear();
+                    // Historico de pessoas (quando implementar o banco de dados irei fazer)
                     break;
                 case 3:
-                    // Financeiro();
-                    Console.Clear();
-                    Console.WriteLine("Executando menu Financeiro");
-                    Console.ReadKey();
-                    Thread.Sleep(1000);
-                    Console.Clear();
+                    CadastroLocacao.Cadastrar(); 
+                    break;
+                case 4:
+                    // Historico de Locação
+                    break;
+                case 5:
+                    // Baixa de Locação
+                    break;
+                case 6:
+                    // Plano De Contas
+                    break;
+                case 7:
+                    // Pendencias Financeiras
+                    break;
+                case 8:
+                    // Baixar Pendencias Financeiras
                     break;
                 case 0:
-                    // Sair();
-                    Console.Clear();
-                    Console.WriteLine("Volte Logo!! :)");
-                    Environment.Exit(0);
                     break;
                 default:
                     Console.WriteLine("Opção invalida!!");
                     Console.ReadKey();
                     Thread.Sleep(1000);
                     Console.Clear();
-                    
                     break;
 
             }
@@ -67,5 +68,15 @@ namespace Projeto_Atlas
                 ExecutarEscolha(Escolha);
             }
         }
+        /*  Console.WriteLine("Escolha uma opção: ");
+            Console.WriteLine("1. Registrar Pessoa");
+            Console.WriteLine("2. Histórico de pessoas");
+            Console.WriteLine("3. Nova Locação");
+            Console.WriteLine("4. Historico de Locação");
+            Console.WriteLine("5. Baixar Locação");
+            Console.WriteLine("6. Plano de Contas");
+            Console.WriteLine("7. Listar Pendencias Financeiras");
+            Console.WriteLine("8. Baixar Pendência Financeira");
+            Console.WriteLine("0. Sair");*/
     }
 }
