@@ -16,10 +16,19 @@ namespace Projeto_Atlas.Modelos
 
         public Pessoa(string Nome, string Contato, string Cpf, DateTime Nascimento)
         {
+            this.Id = Id;
             this.Nome = Nome;
             this.Contato = Contato;
             this.Cpf = Cpf;
             this.Nascimento = Nascimento;
+        }
+
+        public override string? ToString()
+        {
+            return "ID: " + Id + "\n" +
+            "Nome: " + Nome + "\n" +
+            "Contato: " + Contato + "\n" +
+            "Nascimento " + Nascimento.ToString("dd/MM/yyyy") + "\n";
         }
     }
 }

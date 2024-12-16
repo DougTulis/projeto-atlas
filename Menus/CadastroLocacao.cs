@@ -19,7 +19,6 @@ namespace Projeto_Atlas.Menus
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("***********************");
             Console.ForegroundColor = ConsoleColor.White;
-
             // Preenchendo o formulário de locação de veículos
 
             Console.Write("CPF do locatário: ");
@@ -31,12 +30,6 @@ namespace Projeto_Atlas.Menus
             MenuTipoLocacao.Exibir();
             MenuTipoLocacao.Contrato();
             MenuPagamentos.Exibir();
-
-            
-
-
-
-            
             Thread.Sleep(1000);
             Console.Clear();
         }

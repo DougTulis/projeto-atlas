@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Projeto_Atlas.Banco
 {
-    internal class Conexao
+    public class Conexao
     {
         private string StringConexao = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AtlasDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
 
@@ -16,6 +16,5 @@ namespace Projeto_Atlas.Banco
         {
             return new SqlConnection(StringConexao);
         }
-
     }
 }

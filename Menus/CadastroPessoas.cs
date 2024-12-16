@@ -1,4 +1,7 @@
-﻿using Projeto_Atlas.Modelos;
+﻿using Microsoft.Data.SqlClient;
+using Projeto_Atlas.Banco;
+using Projeto_Atlas.Interfaces;
+using Projeto_Atlas.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,10 +11,17 @@ using System.Threading.Tasks;
 
 namespace Projeto_Atlas.Menus
 {
-    public static class CadastroPessoas
+    public class CadastroPessoas
     {
-        public static void Cadastrar()
+        private readonly DAO PessoaDAO;
+        public CadastroPessoas(DAO PessoaDAO)
         {
+            this.PessoaDAO = PessoaDAO; // Fazendo a injeção de dependencia
+        }
+
+        public void Cadastrar()
+        {
+
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("***********************");
@@ -21,15 +31,23 @@ namespace Projeto_Atlas.Menus
             Console.WriteLine("***********************");
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.Write("Nome completo: ");
-            string Nome = Console.ReadLine();
-            Console.Write("Numero contato: ");
-            string Contato = Console.ReadLine();
-            Console.Write("CPF: ");
-            string Cpf = Console.ReadLine();
-            Console.Write("Data de nascimento (dd/MM/yyyy): ");
-            DateTime Nascimento = DateTime.ParseExact(Console.ReadLine(),"dd/MM/yyyy",CultureInfo.InvariantCulture);
-            Console.Write("Pessoa cadastrada com sucesso!");
+            try
+            {
+                Console.Write("Nome completo: ");
+                string Nome = Console.ReadLine();
+                Console.Write("Numero contato: ");
+                string Contato = Console.ReadLine();
+                Console.Write("CPF: ");
+                string Cpf = Console.ReadLine();
+                Console.Write("Data de nascimento (dd/MM/yyyy): ");
+                DateTime Nascimento = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+             
+                PessoaDAO.AdicionarPessoa(new Pessoa(Nome, Contato, Cpf, Nascimento));
+
+                Console.Write("Pessoa cadastrada com sucesso!");
+
+            }
+            catch (SqlException e) { Console.WriteLine(e.StackTrace); }
             Thread.Sleep(2000);
             Console.Clear();
         }

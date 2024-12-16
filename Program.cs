@@ -1,24 +1,17 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.IdentityModel.Tokens;
 using Projeto_Atlas.Banco;
+using Projeto_Atlas.Interfaces;
 using Projeto_Atlas.Menus;
+using Projeto_Atlas.Modelos;
 using System.Linq.Expressions;
+using System.Runtime.CompilerServices;
 
-
-try
-{
-    using var Conexao = new Conexao().ObterConexao();
-    Conexao.Open();
-    Console.WriteLine("Conexao Aberta!");
-}
-catch(SqlException e){
-    Console.WriteLine(e.StackTrace);
-}
-return;
 namespace Projeto_Atlas
 {
     internal class Program
     {
-       static void ExecutarEscolha(int Escolha)
+        static void ExecutarEscolha(int Escolha)
         {
             switch (Escolha)
             {
@@ -26,10 +19,10 @@ namespace Projeto_Atlas
                     CadastroPessoas.Cadastrar();
                     break;
                 case 2:
-                    // Historico de pessoas (quando implementar o banco de dados irei fazer)
+
                     break;
                 case 3:
-                    CadastroLocacao.Cadastrar(); 
+                    CadastroLocacao.Cadastrar();
                     break;
                 case 4:
                     // Historico de Locação
@@ -54,7 +47,6 @@ namespace Projeto_Atlas
                     Thread.Sleep(1000);
                     Console.Clear();
                     break;
-
             }
         }
 
